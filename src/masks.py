@@ -35,5 +35,3 @@ def get_mask_account(account_number: Union[str, int]) -> str:
     else:
         masked_account_number = account_number_without_spaces[-4:]
         return "**" + masked_account_number
-
-print(get_mask_card_number(7000792289606361), get_mask_account(73654108430135874305))
