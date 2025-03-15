@@ -30,7 +30,13 @@ def mask_account_card(account_card: [str]) -> str:
 
 
 def get_date(data: [str]) -> str:
-    pass
+    year = data[:4]
+    month = data[5:7]
+    day = data[8:10]
+    if year.isdigit() is not True or month.isdigit() is not True or day.isdigit() is not True:
+        return "Ошибка: неверный формат данных"
+    else:
+        return f"{day}.{month}.{year}"
 
 
 
