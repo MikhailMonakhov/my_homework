@@ -14,3 +14,4 @@ def sort_by_date(data: list, is_reversed: bool = True) -> list:
     """Функция, которая сортирует полученный список и возвращает новый в указанном порядке"""
     sorted_data = sorted(data, key=lambda x: x["date"], reverse=is_reversed)
     return sorted_data
+
