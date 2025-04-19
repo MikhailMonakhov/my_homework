@@ -5,7 +5,13 @@ def filter_by_state(data: list, state: str = "EXECUTED") -> list:
     """
     expected_states = []
     for state_dict in data:
-        if state_dict["state"] == state:
+        # Если значение state пустое, добавляем все словари со значением "EXECUTED"
+        if state == "" or state == " ":
+            if state_dict.get("state") == "EXECUTED":
+                expected_states.append(state_dict)
+        # Возвращаем словари с указанным значением state или считаем, что словари без ключа state
+        # по умолчанию приравнены к словарям со значением EXECUTED
+        elif (state_dict.get("state") == state) or (state == "EXECUTED" and "state" not in state_dict):
             expected_states.append(state_dict)
     return expected_states
 
@@ -14,4 +20,3 @@ def sort_by_date(data: list, is_reversed: bool = True) -> list:
     """Функция, которая сортирует полученный список и возвращает новый в указанном порядке"""
     sorted_data = sorted(data, key=lambda x: x["date"], reverse=is_reversed)
     return sorted_data
-

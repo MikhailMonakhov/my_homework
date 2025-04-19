@@ -1,7 +1,4 @@
-from typing import Union
-
-
-def get_mask_card_number(card_number: Union[str, int]) -> str:
+def get_mask_card_number(card_number: str) -> str:
     """
     Функция, которая получает номер карты, проверяет длину и наличие неправильных знаков,
     делит на 4 равные части, маскируя нужные отрезки, и возвращает f-строкой замаскированный номер карты
@@ -21,15 +18,15 @@ def get_mask_card_number(card_number: Union[str, int]) -> str:
         return f"{card_number_part_1} {card_number_part_2} {card_number_part_3} {card_number_part_4}"
 
 
-def get_mask_account(account_number: Union[str, int]) -> str:
+def get_mask_account(account_number: str) -> str:
     """
-    Функция, которая получает номер счёта, проверяет наличие неправильных знаков и возвращает
+    Функция, которая получает номер счёта, проверяет длину и наличие неправильных знаков и возвращает
     в нужном формате последние 4 цифры номера
     """
     account_number_str = str(account_number)
     account_number_without_spaces = account_number_str.replace(" ", "")
-    if account_number_without_spaces.isdigit() is not True:
-        print("В номере банковского счёта содержатся неправильные знаки.")
+    if len(account_number_without_spaces) != 20 or account_number_without_spaces.isdigit() is not True:
+        print("В номере банковского счёта содержатся неправильные знаки или неправильное количество знаков.")
         # аналогично комментарию в строках 13-14
         return "Ошибка ввода"
     else:
